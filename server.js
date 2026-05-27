@@ -16,11 +16,18 @@ app.use(express.static("public"));
 const upload = multer({ storage: multer.memoryStorage() });
 
 // Configuração do seu e-mail (usará variáveis de ambiente no Render)
+// Configuração do e-mail com rota explícita para nuvem
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
+  },
+  tls: {
+    // Ignora erros de certificado em servidores gratuitos
+    rejectUnauthorized: false,
   },
 });
 
