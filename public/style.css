@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1a1a1a;
+  color: #f4f4f4;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1,
+h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+}
+
+.secao {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1s ease-in-out;
+}
+
+.ativa {
+  display: flex;
+  opacity: 1;
+}
+
+.oculta {
+  display: none;
+  opacity: 0;
+}
+
+/* Tela Inicial */
+.conteudo-central {
+  text-align: center;
+  padding: 20px;
+}
+
+.conteudo-central h1 {
+  font-size: 3rem;
+  margin-bottom: 40px;
+  font-style: italic;
+  color: #e0e0e0;
+}
+
+button {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 1px;
+}
+
+button:hover {
+  background-color: #cccccc;
+  transform: scale(1.05);
+}
+
+/* Galeria */
+#tela-galeria {
+  padding: 50px 20px;
+  justify-content: flex-start;
+}
+
+.item-memoria {
+  margin-bottom: 80px;
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+}
+
+.item-memoria img,
+.item-memoria video {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+
+.frase {
+  font-size: 1.5rem;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  color: #b3b3b3;
+}
+
+/* Caixa Final */
+.caixa-final {
+  background-color: #2a2a2a;
+  padding: 40px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.caixa-final h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.caixa-final p {
+  margin-bottom: 20px;
+  color: #a0a0a0;
+}
+
+textarea {
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #1a1a1a;
+  color: #fff;
+  margin-bottom: 20px;
+  font-family: "Roboto", sans-serif;
+  resize: vertical;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 1px solid #fff;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.custom-file-upload:hover {
+  background-color: #fff;
+  color: #1a1a1a;
+}
+
+#nome-arquivo {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+@media (max-width: 768px) {
+  .conteudo-central h1 {
+    font-size: 2rem;
+  }
+  .frase {
+    font-size: 1.2rem;
+  }
+}

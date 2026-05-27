@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nossa História</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Roboto:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Tela Inicial -->
+    <section id="tela-inicial" class="secao ativa">
+      <div class="conteudo-central">
+        <h1>E foi assim que tudo começou...</h1>
+        <button id="btn-iniciar">Iniciar</button>
+      </div>
+    </section>
+
+    <!-- Galeria de Lembranças -->
+    <section id="tela-galeria" class="secao oculta">
+      <div class="item-memoria">
+        <!-- Substitua os 'src' pelos caminhos reais das suas fotos/vídeos -->
+        <img
+          src="https://via.placeholder.com/600x400"
+          alt="Nossa primeira foto"
+        />
+        <p class="frase">A primeira vez que nossos olhares se cruzaram.</p>
+      </div>
+
+      <div class="item-memoria">
+        <img src="https://via.placeholder.com/600x400" alt="Outro momento" />
+        <p class="frase">Os sorrisos que compartilhamos.</p>
+      </div>
+
+      <!-- Seção Final de Contato -->
+      <div class="caixa-final">
+        <h2>Caso queira dizer algo...</h2>
+        <p>
+          Se quiser escrever alguma coisa, mandar uma foto ou vídeo, o espaço é
+          seu.
+        </p>
+
+        <form id="form-final">
+          <textarea
+            id="mensagem"
+            rows="5"
+            placeholder="Escreva sua mensagem aqui..."
+          ></textarea>
+
+          <label for="arquivo" class="custom-file-upload">
+            Escolher Foto/Vídeo
+          </label>
+          <input
+            type="file"
+            id="arquivo"
+            name="arquivo"
+            accept="image/*,video/*"
+          />
+          <span id="nome-arquivo">Nenhum arquivo escolhido</span>
+
+          <button type="submit" id="btn-enviar">Enviar</button>
+        </form>
+        <p id="status-envio"></p>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
