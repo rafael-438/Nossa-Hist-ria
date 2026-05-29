@@ -57,7 +57,7 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* TRANSIÇÃO (CORAÇÃO AZUL CLARO) */
+/* TRANSIÇÃO (CORAÇÃO AZUL CLARO) - AGORA FUNCIONA! */
 #tela-transicao {
   height: 100vh;
   width: 100vw;
@@ -71,32 +71,41 @@ button:hover {
   z-index: 9999;
 }
 
-.coracao {
-  width: 100px;
-  fill: #87cefa; /* Azul claro */
-  animation: pulsar-coracao 2.5s ease-in-out forwards;
+.coracao-animado {
+  width: 80px;
+  fill: #87cefa;
+  transform: scale(0); /* Começa invisível */
+}
+
+/* O JavaScript adiciona a classe 'animar' no clique */
+#tela-transicao.animar .coracao-animado {
+  animation: pulsar-coracao 3s ease-in-out forwards;
 }
 
 @keyframes pulsar-coracao {
   0% {
-    transform: scale(1);
+    transform: scale(0);
     opacity: 0;
   }
   20% {
-    transform: scale(1.3);
+    transform: scale(1.5);
     opacity: 1;
   }
   40% {
     transform: scale(1);
     opacity: 1;
   }
+  80% {
+    transform: scale(80);
+    opacity: 1;
+  }
   100% {
-    transform: scale(50);
+    transform: scale(100);
     opacity: 0;
-  } /* Cobre a tela toda antes de sumir */
+  }
 }
 
-/* LINHA DO TEMPO CINEMATOGRÁFICA */
+/* LINHA DO TEMPO */
 #tela-galeria {
   display: flex;
   flex-direction: column;
@@ -105,7 +114,7 @@ button:hover {
 }
 
 .bloco-memoria {
-  min-height: 100vh; /* Ocupa a tela inteira */
+  min-height: 100vh;
   width: 100%;
   max-width: 900px;
   display: flex;
@@ -114,7 +123,7 @@ button:hover {
   justify-content: center;
   padding: 20px;
   opacity: 0;
-  transform: translateY(100px); /* Vem de baixo */
+  transform: translateY(100px);
   transition: all 1.2s ease-out;
 }
 
@@ -143,10 +152,10 @@ button:hover {
 .destaque-final {
   color: #87cefa;
   font-size: 2.2rem;
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
-/* LAYOUTS ESPECÍFICOS */
+/* LAYOUTS DE IMAGENS */
 .duas-imagens {
   display: flex;
   gap: 20px;
@@ -172,6 +181,28 @@ button:hover {
   width: 100%;
   height: 250px;
   margin-bottom: 0;
+}
+
+/* MOSAICO 16 FOTOS */
+.mosaico-16 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.mosaico-16 img {
+  width: 100%;
+  height: 150px;
+  margin-bottom: 0;
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s;
+}
+
+.mosaico-16 img:hover {
+  transform: scale(1.05);
 }
 
 /* CAIXA FINAL */
@@ -240,11 +271,21 @@ input[type="file"] {
   .frase {
     font-size: 1.5rem;
   }
+  .destaque-final {
+    font-size: 1.6rem;
+  }
   .duas-imagens {
     flex-direction: column;
     align-items: center;
   }
   .juncao-imagens img {
     height: 150px;
+  }
+  /* Ajuste do mosaico para celulares */
+  .mosaico-16 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .mosaico-16 img {
+    height: 100px;
   }
 }

@@ -1,14 +1,12 @@
 // COLE AQUI A URL QUE O GOOGLE APP SCRIPT GEROU
 const URL_WEBHOOK =
   "https://script.google.com/macros/s/AKfycbz8Z-ASkhlNNwIkUFkclCFqHfBMZRWSsXlHUbkCitN3IiqW5iSGvA-oFYBxtFspBUqt/exec";
-
 document.addEventListener("DOMContentLoaded", () => {
   const btnIniciar = document.getElementById("btn-iniciar");
   const telaInicial = document.getElementById("tela-inicial");
   const telaTransicao = document.getElementById("tela-transicao");
   const telaGaleria = document.getElementById("tela-galeria");
 
-  // Controle de Animação de Rolagem (Scroll)
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -18,38 +16,38 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     },
     { threshold: 0.2 },
-  ); // Dispara quando 20% do bloco aparece na tela
+  );
 
-  // Lógica do botão INICIAR
   btnIniciar.addEventListener("click", () => {
-    // Envia email de notificação em silêncio
     fetch(URL_WEBHOOK, {
       method: "POST",
       body: JSON.stringify({ acao: "iniciar" }),
     }).catch(console.error);
 
-    // Oculta tela inicial suavemente
     telaInicial.style.opacity = "0";
 
     setTimeout(() => {
       telaInicial.classList.add("oculta");
-      telaTransicao.classList.remove("oculta"); // Mostra o coração
+      telaTransicao.classList.remove("oculta");
 
-      // Aguarda a animação do coração terminar (2 segundos)
+      // Força um pequeno atraso e dispara a animação do coração
+      setTimeout(() => {
+        telaTransicao.classList.add("animar");
+      }, 50);
+
+      // Aguarda 3 segundos (tempo do coração crescer) e mostra as fotos
       setTimeout(() => {
         telaTransicao.classList.add("oculta");
-        telaGaleria.classList.remove("oculta"); // Mostra a galeria
-        window.scrollTo(0, 0); // Garante que começa no topo
+        telaGaleria.classList.remove("oculta");
+        window.scrollTo(0, 0);
 
-        // Começa a observar os blocos para animação de rolagem
         document.querySelectorAll(".animar-scroll").forEach((bloco) => {
           observer.observe(bloco);
         });
-      }, 2000);
+      }, 3000);
     }, 800);
   });
 
-  // Lógica do Formulário Final (mantida igual)
   const inputArquivo = document.getElementById("arquivo");
   const nomeArquivo = document.getElementById("nome-arquivo");
   const formFinal = document.getElementById("form-final");
