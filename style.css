@@ -5,83 +5,99 @@
 }
 
 body {
-  background-color: #121212;
+  background-color: #0a0a0a;
   color: #f4f4f4;
-  font-family: "Roboto", sans-serif;
-  overflow-x: hidden;
+  font-family: "Montserrat", sans-serif;
+  overflow: hidden; /* Remove barra de rolagem */
 }
 
-h1,
-h2,
-.frase {
-  font-family: "Playfair Display", serif;
+/* Telas independentes (Cenas) */
+.cena {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  pointer-events: none; /* Desativa cliques quando invisível */
+}
+
+.cena.ativa {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 10;
 }
 
 .oculta {
   display: none !important;
 }
-.ativa {
-  display: flex !important;
-}
 
-/* TELA INICIAL */
-#tela-inicial {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  transition: opacity 0.8s ease;
-}
-
-.conteudo-central h1 {
-  font-size: 3rem;
-  margin-bottom: 40px;
+/* Tipografia */
+h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 3.5rem;
   font-style: italic;
-  color: #e0e0e0;
+  color: #eaeaea;
+  margin-bottom: 40px;
+  text-align: center;
+}
+h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
 }
 
-button {
+/* Botões */
+.btn-acao {
   background-color: #ffffff;
-  color: #121212;
+  color: #0a0a0a;
   border: none;
   padding: 15px 40px;
   font-size: 1.2rem;
   cursor: pointer;
   border-radius: 30px;
   transition: 0.3s;
+  font-family: "Montserrat", sans-serif;
 }
-
-button:hover {
+.btn-acao:hover {
   transform: scale(1.05);
+  background-color: #87cefa;
 }
 
-/* TRANSIÇÃO (CORAÇÃO AZUL CLARO) - AGORA FUNCIONA! */
-#tela-transicao {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #121212;
-  position: fixed;
-  top: 0;
-  left: 0;
+.btn-proximo {
+  background-color: transparent;
+  border: 1px solid #87cefa;
+  color: #87cefa;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.4s;
+  margin-top: 30px;
+}
+.btn-proximo:hover {
+  background-color: #87cefa;
+  color: #0a0a0a;
+}
+
+/* Animação do Coração */
+#cena-coracao {
+  background-color: #0a0a0a;
   z-index: 9999;
 }
-
 .coracao-animado {
   width: 80px;
   fill: #87cefa;
-  transform: scale(0); /* Começa invisível */
+  transform: scale(0);
 }
-
-/* O JavaScript adiciona a classe 'animar' no clique */
-#tela-transicao.animar .coracao-animado {
+#cena-coracao.animar .coracao-animado {
   animation: pulsar-coracao 3s ease-in-out forwards;
 }
-
 @keyframes pulsar-coracao {
   0% {
     transform: scale(0);
@@ -100,132 +116,151 @@ button:hover {
     opacity: 1;
   }
   100% {
-    transform: scale(100);
+    transform: scale(120);
     opacity: 0;
   }
 }
 
-/* LINHA DO TEMPO */
-#tela-galeria {
+/* Estrutura de Mídia (Fotos) */
+.bloco-midia {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-}
-
-.bloco-memoria {
-  min-height: 100vh;
-  width: 100%;
-  max-width: 900px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding: 20px;
-  opacity: 0;
-  transform: translateY(100px);
-  transition: all 1.2s ease-out;
 }
 
-.bloco-memoria.visivel {
+.bloco-midia img,
+.bloco-midia video {
+  max-width: 700px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+  animation: fadeImagem 1.5s ease-out forwards; /* Imagem aparece suave */
+}
+
+@keyframes fadeImagem {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Blocos Textuais (O SEGREDO DOS 2 SEGUNDOS) */
+.bloco-texto {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1.5s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Classe ativada pelo JS 2 segundos depois */
+.mostrar-texto .bloco-texto {
   opacity: 1;
   transform: translateY(0);
 }
 
-.bloco-memoria img,
-.bloco-memoria video {
-  width: 100%;
-  max-width: 600px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-  margin-bottom: 30px;
-  object-fit: cover;
-}
-
 .frase {
-  font-size: 2rem;
-  font-style: italic;
-  color: #cccccc;
-  text-align: center;
-}
-
-.destaque-final {
-  color: #87cefa;
+  font-family: "Playfair Display", serif;
   font-size: 2.2rem;
-  margin-top: 40px;
+  font-style: italic;
+  color: #dfdfdf;
+  text-align: center;
+  margin-top: 30px;
+  letter-spacing: 1px;
 }
 
-/* LAYOUTS DE IMAGENS */
+/* IMPACTO FINAL (Obrigado pelos 6 anos) */
+.texto-final-impacto {
+  background: rgba(
+    10,
+    10,
+    10,
+    0.85
+  ); /* Fundo escuro transparente sobre as fotos */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(5px);
+}
+
+.frase-impacto {
+  font-family: "Cinzel", serif; /* Fonte mais séria e majestosa */
+  font-size: 3rem;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 5px 15px rgba(135, 206, 250, 0.4);
+  line-height: 1.3;
+}
+
+.sub-impacto {
+  font-size: 2rem;
+  color: #87cefa;
+  margin-top: 20px;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+}
+
+/* Layouts Específicos */
 .duas-imagens {
   display: flex;
   gap: 20px;
-  width: 100%;
   max-width: 800px;
   justify-content: center;
 }
-
 .duas-imagens img {
   max-width: 380px;
-  margin-bottom: 20px;
 }
 
 .juncao-imagens {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
-  width: 100%;
   max-width: 700px;
 }
-
 .juncao-imagens img {
-  width: 100%;
-  height: 250px;
-  margin-bottom: 0;
+  height: 300px;
+  object-fit: cover;
 }
 
-/* MOSAICO 16 FOTOS */
 .mosaico-16 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
 }
-
 .mosaico-16 img {
-  width: 100%;
-  height: 150px;
-  margin-bottom: 0;
-  border-radius: 6px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 4px;
+  opacity: 0.8;
 }
 
-.mosaico-16 img:hover {
-  transform: scale(1.05);
-}
-
-/* CAIXA FINAL */
+/* Formulário Final */
 .caixa-final {
-  background-color: #1e1e1e;
+  background-color: #1a1a1a;
   padding: 50px;
-  border-radius: 15px;
+  border-radius: 12px;
   text-align: center;
-  width: 100%;
   max-width: 600px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
-
-.caixa-final h2 {
-  margin-bottom: 15px;
-  font-size: 2.5rem;
-}
 .caixa-final p {
   margin-bottom: 30px;
-  color: #a0a0a0;
+  color: #aaa;
   font-size: 1.1rem;
 }
-
 textarea {
   width: 100%;
   padding: 15px;
@@ -234,10 +269,9 @@ textarea {
   background-color: #121212;
   color: #fff;
   margin-bottom: 25px;
-  resize: vertical;
+  resize: none;
   font-size: 1rem;
 }
-
 input[type="file"] {
   display: none;
 }
@@ -245,17 +279,15 @@ input[type="file"] {
   display: inline-block;
   padding: 12px 25px;
   cursor: pointer;
-  border: 2px solid #87cefa;
+  border: 1px solid #87cefa;
   color: #87cefa;
   border-radius: 30px;
   margin-bottom: 15px;
   transition: 0.3s;
-  font-weight: bold;
 }
-
 .custom-file-upload:hover {
   background-color: #87cefa;
-  color: #121212;
+  color: #0a0a0a;
 }
 #nome-arquivo {
   display: block;
@@ -265,27 +297,28 @@ input[type="file"] {
 }
 
 @media (max-width: 768px) {
-  .conteudo-central h1 {
-    font-size: 2rem;
+  h1 {
+    font-size: 2.2rem;
   }
   .frase {
-    font-size: 1.5rem;
-  }
-  .destaque-final {
     font-size: 1.6rem;
+  }
+  .frase-impacto {
+    font-size: 2rem;
+  }
+  .sub-impacto {
+    font-size: 1.5rem;
   }
   .duas-imagens {
     flex-direction: column;
-    align-items: center;
   }
   .juncao-imagens img {
     height: 150px;
   }
-  /* Ajuste do mosaico para celulares */
   .mosaico-16 {
     grid-template-columns: repeat(3, 1fr);
   }
   .mosaico-16 img {
-    height: 100px;
+    height: 120px;
   }
 }

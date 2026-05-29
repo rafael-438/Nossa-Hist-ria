@@ -4,21 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nossa História</title>
-    <link rel="stylesheet" href="style.css?v=3" />
+    <link rel="stylesheet" href="style.css?v=4" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Roboto:wght@300;400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <section id="tela-inicial" class="secao ativa">
+    <section id="cena-0" class="cena ativa">
       <div class="conteudo-central">
         <h1>E foi assim que tudo começou...</h1>
-        <button id="btn-iniciar">Iniciar</button>
+        <button class="btn-acao" id="btn-iniciar">Iniciar</button>
       </div>
     </section>
 
-    <section id="tela-transicao" class="oculta">
+    <section id="cena-coracao" class="cena oculta">
       <div class="coracao-container">
         <svg class="coracao-animado" viewBox="0 0 32 29.6">
           <path
@@ -28,86 +28,123 @@
       </div>
     </section>
 
-    <section id="tela-galeria" class="oculta">
-      <div class="bloco-memoria animar-scroll">
+    <section id="cena-1" class="cena oculta">
+      <div class="bloco-midia">
         <img src="foto1.jpeg" alt="Primeira foto" />
-        <p class="frase">Foi aqui que tudo iniciou</p>
+        <div class="bloco-texto">
+          <p class="frase">Foi aqui que tudo iniciou</p>
+          <button class="btn-proximo">Continuar</button>
+        </div>
       </div>
+    </section>
 
-      <div class="bloco-memoria animar-scroll">
+    <section id="cena-2" class="cena oculta">
+      <div class="bloco-midia">
         <div class="duas-imagens">
           <img src="foto2.jpeg" alt="Momento 1" />
           <img src="foto3.jpeg" alt="Momento 2" />
         </div>
-        <p class="frase">Foram momentos excelentes</p>
+        <div class="bloco-texto">
+          <p class="frase">Foram momentos excelentes</p>
+          <button class="btn-proximo">Continuar</button>
+        </div>
       </div>
+    </section>
 
-      <div class="bloco-memoria animar-scroll">
+    <section id="cena-3" class="cena oculta">
+      <div class="bloco-midia">
         <video src="video1.mp4" controls preload="metadata"></video>
-        <p class="frase">Vivemos, curtimos e amamos um ao outro</p>
+        <div class="bloco-texto">
+          <p class="frase">Vivemos, curtimos e amamos um ao outro</p>
+          <button class="btn-proximo">Continuar</button>
+        </div>
       </div>
+    </section>
 
-      <div class="bloco-memoria animar-scroll">
+    <section id="cena-4" class="cena oculta">
+      <div class="bloco-midia">
         <div class="juncao-imagens">
           <img src="foto4.jpeg" alt="Lembrança" />
           <img src="foto5.jpeg" alt="Lembrança" />
           <img src="foto6.jpeg" alt="Lembrança" />
           <img src="foto7.jpeg" alt="Lembrança" />
         </div>
+        <div class="bloco-texto">
+          <button class="btn-proximo">Continuar</button>
+        </div>
       </div>
+    </section>
 
-      <div class="bloco-memoria animar-scroll">
+    <section id="cena-5" class="cena oculta">
+      <div class="bloco-midia">
         <div class="mosaico-16">
-          <img src="foto1.jpeg" alt="Foto 1" />
-          <img src="foto2.jpeg" alt="Foto 2" />
-          <img src="foto3.jpeg" alt="Foto 3" />
-          <img src="foto4.jpeg" alt="Foto 4" />
-          <img src="foto5.jpeg" alt="Foto 5" />
-          <img src="foto6.jpeg" alt="Foto 6" />
-          <img src="foto7.jpeg" alt="Foto 7" />
-          <img src="foto8.jpeg" alt="Foto 8" />
-          <img src="foto9.jpeg" alt="Foto 9" />
-          <img src="foto10.jpeg" alt="Foto 10" />
-          <img src="foto11.jpeg" alt="Foto 11" />
-          <img src="foto12.jpeg" alt="Foto 12" />
-          <img src="foto13.jpeg" alt="Foto 13" />
-          <img src="foto14.jpeg" alt="Foto 14" />
-          <img src="foto15.jpeg" alt="Foto 15" />
-          <img src="foto16.jpeg" alt="Foto 16" />
+          <img src="foto1.jpeg" alt="Foto 1" /><img
+            src="foto2.jpeg"
+            alt="Foto 2"
+          /><img src="foto3.jpeg" alt="Foto 3" /><img
+            src="foto4.jpeg"
+            alt="Foto 4"
+          />
+          <img src="foto5.jpeg" alt="Foto 5" /><img
+            src="foto6.jpeg"
+            alt="Foto 6"
+          /><img src="foto7.jpeg" alt="Foto 7" /><img
+            src="foto8.jpeg"
+            alt="Foto 8"
+          />
+          <img src="foto9.jpeg" alt="Foto 9" /><img
+            src="foto10.jpeg"
+            alt="Foto 10"
+          /><img src="foto11.jpeg" alt="Foto 11" /><img
+            src="foto12.jpeg"
+            alt="Foto 12"
+          />
+          <img src="foto13.jpeg" alt="Foto 13" /><img
+            src="foto14.jpeg"
+            alt="Foto 14"
+          /><img src="foto15.jpeg" alt="Foto 15" /><img
+            src="foto16.jpeg"
+            alt="Foto 16"
+          />
         </div>
-        <p class="frase destaque-final">
-          Obrigado pelos melhores 6 anos da minha vida, infelizmente encerramos
-          aqui o nosso ciclo.
-        </p>
-      </div>
-
-      <div class="bloco-memoria animar-scroll">
-        <div class="caixa-final">
-          <h2>Caso queira dizer algo...</h2>
-          <p>
-            Se quiser escrever alguma coisa, mandar uma foto ou vídeo, pode
-            escrever aqui.
+        <div class="bloco-texto texto-final-impacto">
+          <p class="frase-impacto">
+            Obrigado pelos melhores 6 anos da minha vida.
           </p>
-          <form id="form-final">
-            <textarea
-              id="mensagem"
-              rows="5"
-              placeholder="Escreva sua mensagem aqui..."
-            ></textarea>
-            <label for="arquivo" class="custom-file-upload"
-              >Escolher Foto/Vídeo</label
-            >
-            <input
-              type="file"
-              id="arquivo"
-              name="arquivo"
-              accept="image/*,video/*"
-            />
-            <span id="nome-arquivo">Nenhum arquivo escolhido</span>
-            <button type="submit" id="btn-enviar">Enviar</button>
-          </form>
-          <p id="status-envio"></p>
+          <p class="frase-impacto sub-impacto">
+            Infelizmente, encerramos aqui o nosso ciclo.
+          </p>
+          <button class="btn-proximo" id="ir-para-form">Finalizar</button>
         </div>
+      </div>
+    </section>
+
+    <section id="cena-6" class="cena oculta">
+      <div class="caixa-final">
+        <h2>Caso queira dizer algo...</h2>
+        <p>
+          Se quiser escrever alguma coisa, mandar uma foto ou vídeo, o espaço é
+          seu.
+        </p>
+        <form id="form-final">
+          <textarea
+            id="mensagem"
+            rows="5"
+            placeholder="Escreva sua mensagem aqui..."
+          ></textarea>
+          <label for="arquivo" class="custom-file-upload"
+            >Escolher Foto/Vídeo</label
+          >
+          <input
+            type="file"
+            id="arquivo"
+            name="arquivo"
+            accept="image/*,video/*"
+          />
+          <span id="nome-arquivo">Nenhum arquivo escolhido</span>
+          <button type="submit" class="btn-acao" id="btn-enviar">Enviar</button>
+        </form>
+        <p id="status-envio"></p>
       </div>
     </section>
 
