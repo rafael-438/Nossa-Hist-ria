@@ -84,7 +84,7 @@ h2 {
   color: #0a0a0a;
 }
 
-/* Animação do Coração */
+/* Animação do Coração (CORRIGIDA PARA CELULAR) */
 #cena-coracao {
   background-color: #0a0a0a;
   z-index: 9999;
@@ -93,10 +93,16 @@ h2 {
   width: 80px;
   fill: #87cefa;
   transform: scale(0);
+  transform-origin: center center;
+  -webkit-transform-origin: center center;
 }
+
 #cena-coracao.animar .coracao-animado {
   animation: pulsar-coracao 3s ease-in-out forwards;
+  -webkit-animation: pulsar-coracao 3s ease-in-out forwards;
 }
+
+/* Reduzimos o tamanho máximo para o celular não bugar */
 @keyframes pulsar-coracao {
   0% {
     transform: scale(0);
@@ -111,16 +117,39 @@ h2 {
     opacity: 1;
   }
   80% {
-    transform: scale(80);
+    transform: scale(45);
     opacity: 1;
   }
   100% {
-    transform: scale(120);
+    transform: scale(60);
     opacity: 0;
   }
 }
 
-/* EFEITO CINEMA - FOTOS E TEXTO */
+@-webkit-keyframes pulsar-coracao {
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0;
+  }
+  20% {
+    -webkit-transform: scale(1.5);
+    opacity: 1;
+  }
+  40% {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: scale(45);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(60);
+    opacity: 0;
+  }
+}
+
+/* EFEITO CINEMA - FOTOS E TEXTO (CORRIGIDO PARA NÃO CORTAR) */
 .bloco-midia {
   position: relative;
   display: flex;
@@ -131,26 +160,34 @@ h2 {
   padding: 20px;
 }
 
-.container-imagem,
-.bloco-midia img,
-.bloco-midia video,
-.juncao-imagens,
-.mosaico-16 {
+/* Fotos únicas e vídeos (Mostrar inteiros) */
+.bloco-midia > img,
+.bloco-midia > video {
   max-width: 900px;
   width: 100%;
+  max-height: 65vh; /* Impede de vazar da tela */
+  object-fit: contain; /* O SEGREDO PARA NÃO CORTAR */
   border-radius: 8px;
   transition: filter 1.5s ease-out;
   animation: fadeImagem 1.5s ease-out forwards;
 }
 
-/* Escurece e borra as fotos */
-.mostrar-texto .bloco-midia img,
+/* Grid de Junção e Mosaico (Estrutura geral) */
+.juncao-imagens,
+.mosaico-16 {
+  max-width: 900px;
+  width: 100%;
+  transition: filter 1.5s ease-out;
+  animation: fadeImagem 1.5s ease-out forwards;
+}
+
+/* Escurece as fotos para o texto aparecer */
+.mostrar-texto .bloco-midia > img,
 .mostrar-texto .juncao-imagens,
 .mostrar-texto .mosaico-16 {
   filter: brightness(0.25) blur(2px);
 }
 
-/* NOVO: O vídeo NÃO borra. Fica nítido para assistir, apenas levemente escuro para o texto brilhar */
 .mostrar-texto .bloco-midia video {
   filter: brightness(0.6);
 }
@@ -166,7 +203,7 @@ h2 {
   }
 }
 
-/* Texto Flutuante e Centralizado */
+/* Texto Flutuante */
 .bloco-texto {
   position: absolute;
   z-index: 20;
@@ -187,7 +224,7 @@ h2 {
   transform: translateY(0) scale(1);
 }
 
-/* Tipografia Unificada de Impacto */
+/* Tipografia */
 .frase-impacto {
   font-family: "Cinzel", serif;
   font-size: 3rem;
@@ -204,7 +241,7 @@ h2 {
   font-style: italic;
 }
 
-/* Layouts Específicos das Mídias */
+/* Layouts Específicos */
 .duas-imagens {
   display: flex;
   gap: 20px;
@@ -213,8 +250,8 @@ h2 {
 }
 .duas-imagens img {
   max-width: 400px;
-  height: 500px;
-  object-fit: cover;
+  max-height: 60vh;
+  object-fit: contain;
 }
 
 .juncao-imagens {
@@ -225,7 +262,9 @@ h2 {
 }
 .juncao-imagens img {
   height: 35vh;
+  width: 100%;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 .mosaico-16 {
@@ -236,8 +275,10 @@ h2 {
 }
 .mosaico-16 img {
   height: 20vh;
+  width: 100%;
   object-fit: cover;
   opacity: 0.9;
+  border-radius: 4px;
 }
 
 /* Formulário Final */
@@ -289,25 +330,36 @@ input[type="file"] {
   color: #888;
 }
 
+/* AJUSTES PARA O CELULAR (MOBILE) */
 @media (max-width: 768px) {
   h1 {
     font-size: 2.2rem;
   }
   .frase-impacto {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
   }
   .sub-impacto {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
+
+  .bloco-midia > img,
+  .bloco-midia > video {
+    max-height: 50vh;
+  }
+
   .duas-imagens {
     flex-direction: column;
+    align-items: center;
   }
   .duas-imagens img {
-    height: 30vh;
+    max-height: 30vh;
+    width: auto;
   }
+
   .juncao-imagens img {
-    height: 25vh;
+    height: 20vh;
   }
+
   .mosaico-16 {
     grid-template-columns: repeat(3, 1fr);
   }
