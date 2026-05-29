@@ -11,59 +11,86 @@
     />
   </head>
   <body>
-    <!-- Tela Inicial -->
-    <section id="tela-inicial" class="secao ativa">
+    <section id="tela-inicial" class="secao">
       <div class="conteudo-central">
         <h1>E foi assim que tudo começou...</h1>
         <button id="btn-iniciar">Iniciar</button>
       </div>
     </section>
 
-    <!-- Galeria de Lembranças -->
-    <section id="tela-galeria" class="secao oculta">
-      <div class="item-memoria">
-        <!-- Substitua os 'src' pelos caminhos reais das suas fotos/vídeos -->
-        <img
-          src="https://via.placeholder.com/600x400"
-          alt="Nossa primeira foto"
-        />
-        <p class="frase">A primeira vez que nossos olhares se cruzaram.</p>
-      </div>
-
-      <div class="item-memoria">
-        <img src="https://via.placeholder.com/600x400" alt="Outro momento" />
-        <p class="frase">Os sorrisos que compartilhamos.</p>
-      </div>
-
-      <!-- Seção Final de Contato -->
-      <div class="caixa-final">
-        <h2>Caso queira dizer algo...</h2>
-        <p>
-          Se quiser escrever alguma coisa, mandar uma foto ou vídeo, o espaço é
-          seu.
-        </p>
-
-        <form id="form-final">
-          <textarea
-            id="mensagem"
-            rows="5"
-            placeholder="Escreva sua mensagem aqui..."
-          ></textarea>
-
-          <label for="arquivo" class="custom-file-upload">
-            Escolher Foto/Vídeo
-          </label>
-          <input
-            type="file"
-            id="arquivo"
-            name="arquivo"
-            accept="image/*,video/*"
+    <section id="tela-transicao" class="oculta">
+      <div class="coracao-container">
+        <svg class="coracao" viewBox="0 0 32 29.6">
+          <path
+            d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+                c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"
           />
-          <span id="nome-arquivo">Nenhum arquivo escolhido</span>
+        </svg>
+      </div>
+    </section>
 
-          <button type="submit" id="btn-enviar">Enviar</button>
-        </form>
-        <p id="status-envio"></p>
+    <section id="tela-galeria" class="oculta">
+      <div class="bloco-memoria animar-scroll">
+        <img src="foto1.jpg" alt="Primeira foto" />
+        <p class="frase">Foi aqui que tudo iniciou</p>
+      </div>
+
+      <div class="bloco-memoria animar-scroll">
+        <div class="duas-imagens">
+          <img src="foto2.jpg" alt="Momento 1" />
+          <img src="foto3.jpg" alt="Momento 2" />
+        </div>
+        <p class="frase">Foram momentos excelentes</p>
+      </div>
+
+      <div class="bloco-memoria animar-scroll">
+        <video src="video1.mp4" controls preload="metadata"></video>
+        <p class="frase">Vivemos, curtimos e amamos um ao outro</p>
+      </div>
+
+      <div class="bloco-memoria animar-scroll">
+        <div class="juncao-imagens">
+          <img src="foto4.jpg" alt="Lembrança" />
+          <img src="foto5.jpg" alt="Lembrança" />
+          <img src="foto6.jpg" alt="Lembrança" />
+          <img src="foto7.jpg" alt="Lembrança" />
+        </div>
+        <p class="frase destaque-final">
+          Obrigado pelos melhores 6 anos da minha vida, infelizmente encerramos
+          aqui o nosso ciclo.
+        </p>
+      </div>
+
+      <div class="bloco-memoria animar-scroll">
+        <div class="caixa-final">
+          <h2>Caso queira dizer algo...</h2>
+          <p>
+            Se quiser escrever alguma coisa, mandar uma foto ou vídeo, pode
+            escrever aqui.
+          </p>
+
+          <form id="form-final">
+            <textarea
+              id="mensagem"
+              rows="5"
+              placeholder="Escreva sua mensagem aqui..."
+            ></textarea>
+
+            <label for="arquivo" class="custom-file-upload">
+              Escolher Foto/Vídeo
+            </label>
+            <input
+              type="file"
+              id="arquivo"
+              name="arquivo"
+              accept="image/*,video/*"
+            />
+            <span id="nome-arquivo">Nenhum arquivo escolhido</span>
+
+            <button type="submit" id="btn-enviar">Enviar</button>
+          </form>
+          <p id="status-envio"></p>
+        </div>
       </div>
     </section>
 
