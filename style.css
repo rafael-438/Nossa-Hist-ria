@@ -8,10 +8,9 @@ body {
   background-color: #0a0a0a;
   color: #f4f4f4;
   font-family: "Montserrat", sans-serif;
-  overflow: hidden; /* Remove barra de rolagem */
+  overflow: hidden;
 }
 
-/* Telas independentes (Cenas) */
 .cena {
   height: 100vh;
   width: 100vw;
@@ -24,7 +23,7 @@ body {
   left: 0;
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
-  pointer-events: none; /* Desativa cliques quando invisível */
+  pointer-events: none;
 }
 
 .cena.ativa {
@@ -37,7 +36,6 @@ body {
   display: none !important;
 }
 
-/* Tipografia */
 h1 {
   font-family: "Playfair Display", serif;
   font-size: 3.5rem;
@@ -52,7 +50,6 @@ h2 {
   margin-bottom: 15px;
 }
 
-/* Botões */
 .btn-acao {
   background-color: #ffffff;
   color: #0a0a0a;
@@ -78,7 +75,9 @@ h2 {
   font-size: 1rem;
   cursor: pointer;
   transition: 0.4s;
-  margin-top: 30px;
+  margin-top: 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
 }
 .btn-proximo:hover {
   background-color: #87cefa;
@@ -121,22 +120,39 @@ h2 {
   }
 }
 
-/* Estrutura de Mídia (Fotos) */
+/* EFEITO CINEMA - FOTOS E TEXTO */
 .bloco-midia {
+  position: relative;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 100%;
+  height: 100vh;
   padding: 20px;
 }
 
+.container-imagem,
 .bloco-midia img,
-.bloco-midia video {
-  max-width: 700px;
+.bloco-midia video,
+.juncao-imagens,
+.mosaico-16 {
+  max-width: 900px;
   width: 100%;
   border-radius: 8px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
-  animation: fadeImagem 1.5s ease-out forwards; /* Imagem aparece suave */
+  transition: filter 1.5s ease-out;
+  animation: fadeImagem 1.5s ease-out forwards;
+}
+
+/* Escurece e borra as fotos */
+.mostrar-texto .bloco-midia img,
+.mostrar-texto .juncao-imagens,
+.mostrar-texto .mosaico-16 {
+  filter: brightness(0.25) blur(2px);
+}
+
+/* NOVO: O vídeo NÃO borra. Fica nítido para assistir, apenas levemente escuro para o texto brilhar */
+.mostrar-texto .bloco-midia video {
+  filter: brightness(0.6);
 }
 
 @keyframes fadeImagem {
@@ -150,101 +166,78 @@ h2 {
   }
 }
 
-/* Blocos Textuais (O SEGREDO DOS 2 SEGUNDOS) */
+/* Texto Flutuante e Centralizado */
 .bloco-texto {
+  position: absolute;
+  z-index: 20;
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(30px) scale(0.95);
   transition: all 1.5s ease-out;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
 }
 
-/* Classe ativada pelo JS 2 segundos depois */
 .mostrar-texto .bloco-texto {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
-.frase {
-  font-family: "Playfair Display", serif;
-  font-size: 2.2rem;
-  font-style: italic;
-  color: #dfdfdf;
-  text-align: center;
-  margin-top: 30px;
-  letter-spacing: 1px;
-}
-
-/* IMPACTO FINAL (Obrigado pelos 6 anos) */
-.texto-final-impacto {
-  background: rgba(
-    10,
-    10,
-    10,
-    0.85
-  ); /* Fundo escuro transparente sobre as fotos */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  padding: 20px;
-  backdrop-filter: blur(5px);
-}
-
+/* Tipografia Unificada de Impacto */
 .frase-impacto {
-  font-family: "Cinzel", serif; /* Fonte mais séria e majestosa */
+  font-family: "Cinzel", serif;
   font-size: 3rem;
   color: #ffffff;
-  text-align: center;
-  text-shadow: 0 5px 15px rgba(135, 206, 250, 0.4);
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.9);
   line-height: 1.3;
 }
 
 .sub-impacto {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #87cefa;
-  margin-top: 20px;
+  margin-top: 15px;
   font-family: "Playfair Display", serif;
   font-style: italic;
 }
 
-/* Layouts Específicos */
+/* Layouts Específicos das Mídias */
 .duas-imagens {
   display: flex;
   gap: 20px;
-  max-width: 800px;
+  width: 100%;
   justify-content: center;
 }
 .duas-imagens img {
-  max-width: 380px;
+  max-width: 400px;
+  height: 500px;
+  object-fit: cover;
 }
 
 .juncao-imagens {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  max-width: 700px;
+  gap: 10px;
+  width: 100%;
 }
 .juncao-imagens img {
-  height: 300px;
+  height: 35vh;
   object-fit: cover;
 }
 
 .mosaico-16 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  gap: 6px;
   width: 100%;
-  max-width: 900px;
 }
 .mosaico-16 img {
-  height: 180px;
+  height: 20vh;
   object-fit: cover;
-  border-radius: 4px;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 /* Formulário Final */
@@ -300,25 +293,25 @@ input[type="file"] {
   h1 {
     font-size: 2.2rem;
   }
-  .frase {
-    font-size: 1.6rem;
-  }
   .frase-impacto {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   .sub-impacto {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   .duas-imagens {
     flex-direction: column;
   }
+  .duas-imagens img {
+    height: 30vh;
+  }
   .juncao-imagens img {
-    height: 150px;
+    height: 25vh;
   }
   .mosaico-16 {
     grid-template-columns: repeat(3, 1fr);
   }
   .mosaico-16 img {
-    height: 120px;
+    height: 12vh;
   }
 }

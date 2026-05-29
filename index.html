@@ -4,20 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nossa História</title>
-    <link rel="stylesheet" href="style.css?v=4" />
+    <link rel="stylesheet" href="style.css?v=6" />
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
+    <!-- Cena Inicial -->
     <section id="cena-0" class="cena ativa">
       <div class="conteudo-central">
-        <h1>E foi assim que tudo começou...</h1>
+        <h1>E foi assim que a nossa história começou...</h1>
         <button class="btn-acao" id="btn-iniciar">Iniciar</button>
       </div>
     </section>
 
+    <!-- Cena Coração -->
     <section id="cena-coracao" class="cena oculta">
       <div class="coracao-container">
         <svg class="coracao-animado" viewBox="0 0 32 29.6">
@@ -28,16 +30,21 @@
       </div>
     </section>
 
+    <!-- Cena 1 -->
     <section id="cena-1" class="cena oculta">
       <div class="bloco-midia">
         <img src="foto1.jpeg" alt="Primeira foto" />
         <div class="bloco-texto">
-          <p class="frase">Foi aqui que tudo iniciou</p>
+          <p class="frase-impacto">Nossos olhares se cruzaram.</p>
+          <p class="frase-impacto sub-impacto">
+            E foi exatamente aqui que tudo começou...
+          </p>
           <button class="btn-proximo">Continuar</button>
         </div>
       </div>
     </section>
 
+    <!-- Cena 2 -->
     <section id="cena-2" class="cena oculta">
       <div class="bloco-midia">
         <div class="duas-imagens">
@@ -45,22 +52,30 @@
           <img src="foto3.jpeg" alt="Momento 2" />
         </div>
         <div class="bloco-texto">
-          <p class="frase">Foram momentos excelentes</p>
+          <p class="frase-impacto">Construímos memórias lindas.</p>
+          <p class="frase-impacto sub-impacto">
+            Cada sorriso e cada momento ao seu lado se tornaram inesquecíveis.
+          </p>
           <button class="btn-proximo">Continuar</button>
         </div>
       </div>
     </section>
 
+    <!-- Cena 3 -->
     <section id="cena-3" class="cena oculta">
       <div class="bloco-midia">
         <video src="video1.mp4" controls preload="metadata"></video>
         <div class="bloco-texto">
-          <p class="frase">Vivemos, curtimos e amamos um ao outro</p>
+          <p class="frase-impacto">Vivemos momentos.</p>
+          <p class="frase-impacto sub-impacto">
+            Nós rimos, sonhamos, cuidamos um do outro e amamos.
+          </p>
           <button class="btn-proximo">Continuar</button>
         </div>
       </div>
     </section>
 
+    <!-- Cena 4 -->
     <section id="cena-4" class="cena oculta">
       <div class="bloco-midia">
         <div class="juncao-imagens">
@@ -70,11 +85,16 @@
           <img src="foto7.jpeg" alt="Lembrança" />
         </div>
         <div class="bloco-texto">
+          <p class="frase-impacto">Foram momentos preciosos.</p>
+          <p class="frase-impacto sub-impacto">
+            Repletos de companheirismo, viagens e de muitas loucuras kkk.
+          </p>
           <button class="btn-proximo">Continuar</button>
         </div>
       </div>
     </section>
 
+    <!-- Cena 5: Mosaico 16 fotos -->
     <section id="cena-5" class="cena oculta">
       <div class="bloco-midia">
         <div class="mosaico-16">
@@ -107,18 +127,22 @@
             alt="Foto 16"
           />
         </div>
-        <div class="bloco-texto texto-final-impacto">
+        <div class="bloco-texto">
           <p class="frase-impacto">
-            Obrigado pelos melhores 6 anos da minha vida.
+            Sou imensamente grato por esses 6 anos maravilhosos. Levarei cada
+            lembrança com muito carinho.
           </p>
           <p class="frase-impacto sub-impacto">
-            Infelizmente, encerramos aqui o nosso ciclo.
+            Nossos caminhos se separam e encerramos nosso ciclo infelizmente,
+            mas o respeito e as lembranças serão eternos. Seja muito feliz Isa,
+            Amo você!!!!
           </p>
           <button class="btn-proximo" id="ir-para-form">Finalizar</button>
         </div>
       </div>
     </section>
 
+    <!-- Cena 6: Formulário -->
     <section id="cena-6" class="cena oculta">
       <div class="caixa-final">
         <h2>Caso queira dizer algo...</h2>

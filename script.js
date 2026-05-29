@@ -4,13 +4,17 @@ const URL_WEBHOOK =
 document.addEventListener("DOMContentLoaded", () => {
   // Gerenciamento de Cenas (Slides)
   let cenaAtual = 0;
-  const totalCenas = 6; // 0 ao 6
+  const totalCenas = 6;
 
   function mostrarCena(index) {
     // Esconde todas as cenas
     document.querySelectorAll(".cena").forEach((cena) => {
       cena.classList.remove("ativa", "mostrar-texto");
       cena.classList.add("oculta");
+
+      // Pausa o vídeo automaticamente se sair da tela dele
+      const video = cena.querySelector("video");
+      if (video) video.pause();
     });
 
     // Mostra a cena correta
@@ -22,11 +26,20 @@ document.addEventListener("DOMContentLoaded", () => {
         cenaAtiva.classList.add("ativa");
       }, 50);
 
-      // A MÁGICA DOS 2 SEGUNDOS PARA O TEXTO
+      // NOVO: Dá play automático no vídeo assim que a tela abre
+      const video = cenaAtiva.querySelector("video");
+      if (video) {
+        video.currentTime = 0;
+        video
+          .play()
+          .catch((e) => console.log("Autoplay bloqueado pelo navegador", e));
+      }
+
+      // A mágica dos 2 segundos para o texto aparecer
       if (index >= 1 && index <= 5) {
         setTimeout(() => {
           cenaAtiva.classList.add("mostrar-texto");
-        }, 2000);
+        }, 4000);
       }
     }
   }
