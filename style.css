@@ -84,7 +84,7 @@ h2 {
   color: #0a0a0a;
 }
 
-/* Animação do Coração (CORRIGIDA PARA CELULAR) */
+/* Animação do Coração */
 #cena-coracao {
   background-color: #0a0a0a;
   z-index: 9999;
@@ -102,7 +102,6 @@ h2 {
   -webkit-animation: pulsar-coracao 3s ease-in-out forwards;
 }
 
-/* Reduzimos o tamanho máximo para o celular não bugar */
 @keyframes pulsar-coracao {
   0% {
     transform: scale(0);
@@ -149,7 +148,7 @@ h2 {
   }
 }
 
-/* EFEITO CINEMA - FOTOS E TEXTO (CORRIGIDO PARA NÃO CORTAR) */
+/* EFEITO CINEMA - FOTOS E TEXTO */
 .bloco-midia {
   position: relative;
   display: flex;
@@ -160,19 +159,19 @@ h2 {
   padding: 20px;
 }
 
-/* Fotos únicas e vídeos (Mostrar inteiros) */
 .bloco-midia > img,
 .bloco-midia > video {
   max-width: 900px;
   width: 100%;
-  max-height: 65vh; /* Impede de vazar da tela */
-  object-fit: contain; /* O SEGREDO PARA NÃO CORTAR */
+  max-height: 65vh;
+  object-fit: contain;
   border-radius: 8px;
   transition: filter 1.5s ease-out;
   animation: fadeImagem 1.5s ease-out forwards;
 }
 
-/* Grid de Junção e Mosaico (Estrutura geral) */
+/* Grid de Junção, Duas Imagens e Mosaico */
+.duas-imagens,
 .juncao-imagens,
 .mosaico-16 {
   max-width: 900px;
@@ -181,8 +180,9 @@ h2 {
   animation: fadeImagem 1.5s ease-out forwards;
 }
 
-/* Escurece as fotos para o texto aparecer */
+/* Escurece as fotos para o texto aparecer (TODAS AS CENAS AGORA) */
 .mostrar-texto .bloco-midia > img,
+.mostrar-texto .duas-imagens,
 .mostrar-texto .juncao-imagens,
 .mostrar-texto .mosaico-16 {
   filter: brightness(0.25) blur(2px);

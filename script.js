@@ -7,26 +7,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const totalCenas = 6;
 
   function mostrarCena(index) {
-    // Esconde todas as cenas
     document.querySelectorAll(".cena").forEach((cena) => {
       cena.classList.remove("ativa", "mostrar-texto");
       cena.classList.add("oculta");
 
-      // Pausa o vídeo automaticamente se sair da tela dele
       const video = cena.querySelector("video");
       if (video) video.pause();
     });
 
-    // Mostra a cena correta
     const cenaAtiva = document.getElementById(`cena-${index}`);
     if (cenaAtiva) {
       cenaAtiva.classList.remove("oculta");
-      // Pequeno delay para a transição do CSS funcionar
       setTimeout(() => {
         cenaAtiva.classList.add("ativa");
       }, 50);
 
-      // NOVO: Dá play automático no vídeo assim que a tela abre
       const video = cenaAtiva.querySelector("video");
       if (video) {
         video.currentTime = 0;
@@ -35,16 +30,14 @@ document.addEventListener("DOMContentLoaded", () => {
           .catch((e) => console.log("Autoplay bloqueado pelo navegador", e));
       }
 
-      // A mágica dos 2 segundos para o texto aparecer
       if (index >= 1 && index <= 5) {
         setTimeout(() => {
           cenaAtiva.classList.add("mostrar-texto");
-        }, 4000);
+        }, 2000);
       }
     }
   }
 
-  // Botões de "Continuar"
   document.querySelectorAll(".btn-proximo").forEach((btn) => {
     btn.addEventListener("click", () => {
       cenaAtual++;
@@ -52,13 +45,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Início com a Animação do Coração
+  // Início com a Animação do Coração (CORRIGIDO)
   const btnIniciar = document.getElementById("btn-iniciar");
   const cena0 = document.getElementById("cena-0");
   const cenaCoracao = document.getElementById("cena-coracao");
 
   btnIniciar.addEventListener("click", () => {
-    // Envia email invisível
     fetch(URL_WEBHOOK, {
       method: "POST",
       body: JSON.stringify({ acao: "iniciar" }),
@@ -69,14 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       cena0.classList.add("oculta");
       cenaCoracao.classList.remove("oculta");
+      cenaCoracao.classList.add("ativa"); // O segredo para o coração aparecer!
 
       setTimeout(() => {
         cenaCoracao.classList.add("animar");
       }, 50);
 
-      // Depois que o coração estoura, vai para a Cena 1
       setTimeout(() => {
-        cenaCoracao.classList.remove("animar");
+        cenaCoracao.classList.remove("animar", "ativa");
         cenaCoracao.classList.add("oculta");
         cenaAtual = 1;
         mostrarCena(cenaAtual);
