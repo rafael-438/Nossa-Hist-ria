@@ -1,10 +1,10 @@
 // COLE AQUI A URL QUE O GOOGLE APP SCRIPT GEROU
 const URL_WEBHOOK =
   "https://script.google.com/macros/s/AKfycbz8Z-ASkhlNNwIkUFkclCFqHfBMZRWSsXlHUbkCitN3IiqW5iSGvA-oFYBxtFspBUqt/exec";
+
 document.addEventListener("DOMContentLoaded", () => {
   // Gerenciamento de Cenas (Slides)
   let cenaAtual = 0;
-  const totalCenas = 6;
 
   function mostrarCena(index) {
     document.querySelectorAll(".cena").forEach((cena) => {
@@ -30,10 +30,24 @@ document.addEventListener("DOMContentLoaded", () => {
           .catch((e) => console.log("Autoplay bloqueado pelo navegador", e));
       }
 
+      // LÓGICA INTELIGENTE DE TEMPO DAS FRASES
       if (index >= 1 && index <= 5) {
+        let tempoDeEspera = 2000; // Padrão
+
+        if (index === 1 || index === 3) {
+          // Cena 1 (Uma foto) e Cena 3 (Vídeo): 3 segundos
+          tempoDeEspera = 3000;
+        } else if (index === 2 || index === 4) {
+          // Cena 2 e 4 (2 a 4 fotos): 4 segundos
+          tempoDeEspera = 4000;
+        } else if (index === 5) {
+          // Cena 5 (Mosaico de 16 fotos): 5 segundos
+          tempoDeEspera = 5000;
+        }
+
         setTimeout(() => {
           cenaAtiva.classList.add("mostrar-texto");
-        }, 2000);
+        }, tempoDeEspera);
       }
     }
   }
@@ -45,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Início com a Animação do Coração (CORRIGIDO)
+  // Início com a Animação do Coração
   const btnIniciar = document.getElementById("btn-iniciar");
   const cena0 = document.getElementById("cena-0");
   const cenaCoracao = document.getElementById("cena-coracao");
@@ -61,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       cena0.classList.add("oculta");
       cenaCoracao.classList.remove("oculta");
-      cenaCoracao.classList.add("ativa"); // O segredo para o coração aparecer!
+      cenaCoracao.classList.add("ativa");
 
       setTimeout(() => {
         cenaCoracao.classList.add("animar");
