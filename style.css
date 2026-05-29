@@ -20,11 +20,15 @@ h2,
 .oculta {
   display: none !important;
 }
+.ativa {
+  display: flex !important;
+}
 
 /* TELA INICIAL */
 #tela-inicial {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -56,16 +60,21 @@ button:hover {
 /* TRANSIÇÃO (CORAÇÃO AZUL CLARO) */
 #tela-transicao {
   height: 100vh;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #121212;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
 }
 
 .coracao {
-  width: 80px;
+  width: 100px;
   fill: #87cefa; /* Azul claro */
-  animation: pulsar-coracao 2s ease-in-out forwards;
+  animation: pulsar-coracao 2.5s ease-in-out forwards;
 }
 
 @keyframes pulsar-coracao {
@@ -73,43 +82,42 @@ button:hover {
     transform: scale(1);
     opacity: 0;
   }
-  30% {
-    transform: scale(1.2);
+  20% {
+    transform: scale(1.3);
     opacity: 1;
   }
-  50% {
+  40% {
     transform: scale(1);
     opacity: 1;
   }
   100% {
     transform: scale(50);
     opacity: 0;
-  } /* Cresce até cobrir a tela */
+  } /* Cobre a tela toda antes de sumir */
 }
 
-/* LINHA DO TEMPO */
+/* LINHA DO TEMPO CINEMATOGRÁFICA */
 #tela-galeria {
-  padding: 50px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .bloco-memoria {
-  min-height: 80vh;
+  min-height: 100vh; /* Ocupa a tela inteira */
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 50px;
+  padding: 20px;
   opacity: 0;
-  transform: translateY(50px);
-  transition: all 1s ease-out;
+  transform: translateY(100px); /* Vem de baixo */
+  transition: all 1.2s ease-out;
 }
 
-/* Classe adicionada pelo JavaScript quando o bloco aparece na tela */
 .bloco-memoria.visivel {
   opacity: 1;
   transform: translateY(0);
@@ -119,65 +127,72 @@ button:hover {
 .bloco-memoria video {
   width: 100%;
   max-width: 600px;
-  border-radius: 8px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  margin-bottom: 30px;
+  object-fit: cover;
 }
 
 .frase {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-style: italic;
   color: #cccccc;
   text-align: center;
-  margin-top: 20px;
 }
 
 .destaque-final {
   color: #87cefa;
-  font-size: 2rem;
+  font-size: 2.2rem;
+  margin-top: 30px;
 }
 
-/* LAYOUTS ESPECÍFICOS DE IMAGENS */
+/* LAYOUTS ESPECÍFICOS */
 .duas-imagens {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   width: 100%;
-  max-width: 700px;
+  max-width: 800px;
+  justify-content: center;
 }
 
 .duas-imagens img {
-  margin-bottom: 0;
+  max-width: 380px;
+  margin-bottom: 20px;
 }
 
 .juncao-imagens {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 15px;
   width: 100%;
-  max-width: 600px;
+  max-width: 700px;
 }
 
 .juncao-imagens img {
+  width: 100%;
+  height: 250px;
   margin-bottom: 0;
-  height: 100%;
-  object-fit: cover;
 }
 
 /* CAIXA FINAL */
 .caixa-final {
   background-color: #1e1e1e;
-  padding: 40px;
+  padding: 50px;
   border-radius: 15px;
   text-align: center;
   width: 100%;
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .caixa-final h2 {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 2.5rem;
 }
 .caixa-final p {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: #a0a0a0;
+  font-size: 1.1rem;
 }
 
 textarea {
@@ -187,8 +202,9 @@ textarea {
   border: 1px solid #444;
   background-color: #121212;
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   resize: vertical;
+  font-size: 1rem;
 }
 
 input[type="file"] {
@@ -196,13 +212,14 @@ input[type="file"] {
 }
 .custom-file-upload {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 12px 25px;
   cursor: pointer;
-  border: 1px solid #87cefa;
+  border: 2px solid #87cefa;
   color: #87cefa;
   border-radius: 30px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   transition: 0.3s;
+  font-weight: bold;
 }
 
 .custom-file-upload:hover {
@@ -211,7 +228,7 @@ input[type="file"] {
 }
 #nome-arquivo {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   font-size: 0.9rem;
   color: #888;
 }
@@ -221,9 +238,13 @@ input[type="file"] {
     font-size: 2rem;
   }
   .frase {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
   .duas-imagens {
     flex-direction: column;
+    align-items: center;
+  }
+  .juncao-imagens img {
+    height: 150px;
   }
 }

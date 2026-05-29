@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nossa História</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css?v=2" />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Roboto:wght@300;400&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <section id="tela-inicial" class="secao">
+    <section id="tela-inicial" class="secao ativa">
       <div class="conteudo-central">
         <h1>E foi assim que tudo começou...</h1>
         <button id="btn-iniciar">Iniciar</button>
@@ -22,8 +22,7 @@
       <div class="coracao-container">
         <svg class="coracao" viewBox="0 0 32 29.6">
           <path
-            d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
-                c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"
+            d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"
           />
         </svg>
       </div>
@@ -68,17 +67,15 @@
             Se quiser escrever alguma coisa, mandar uma foto ou vídeo, pode
             escrever aqui.
           </p>
-
           <form id="form-final">
             <textarea
               id="mensagem"
               rows="5"
               placeholder="Escreva sua mensagem aqui..."
             ></textarea>
-
-            <label for="arquivo" class="custom-file-upload">
-              Escolher Foto/Vídeo
-            </label>
+            <label for="arquivo" class="custom-file-upload"
+              >Escolher Foto/Vídeo</label
+            >
             <input
               type="file"
               id="arquivo"
@@ -86,7 +83,6 @@
               accept="image/*,video/*"
             />
             <span id="nome-arquivo">Nenhum arquivo escolhido</span>
-
             <button type="submit" id="btn-enviar">Enviar</button>
           </form>
           <p id="status-envio"></p>
